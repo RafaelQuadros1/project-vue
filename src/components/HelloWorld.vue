@@ -1,13 +1,9 @@
 <template>
-  <nav class="navbar">
-    <toggle />
-  </nav>
-
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <p>Welcome to your Vue.js app!</p>
+    <p>created by <a href="https://github.com/RafaelQuadros1">Rafael</a>!!</p>
 
-    <button class="btn" @click="handleClick">Click {{ count }}</button>
+    <button class="btn" @click="handleClick">Click</button>
 
     <transition name="fade">
       <div v-if="NotificationVisible" class="notification">
@@ -22,22 +18,25 @@
 
 <script>
 import { ref } from "vue";
-import toggle from "./toggle.vue";
+import { useStorage } from "@vueuse/core";
 
 export default {
-  components: { toggle },
   name: "HelloWorld",
   props: {
     msg: {
       type: String,
-      default: "Welcome to your Vue.js app!",
+      default: "Welcome to your clicker app!",
     },
   },
   setup() {
-    const count = ref(0);
+    const count = useStorage("clickCount", 0);
     const NotificationVisible = ref(false);
     const NotificationMessage = ref("");
     let clickTimeout = null;
+
+    function savecount () {
+      useStorage("clickCount", count.value);
+    }
 
     function showNotification(message) {
       NotificationMessage.value = message;
@@ -46,7 +45,7 @@ export default {
 
     function xpThreshold(xp) {
       // Exemplo usando raiz quadrada multiplicada pra dar escala
-      return Math.max(5, Math.floor(Math.sqrt(xp) * 2));
+      return Math.max(5, Math.floor(Math.sqrt(xp) * 1));
     }
 
     function handleClick() {
@@ -57,7 +56,7 @@ export default {
       // Dispara notificação só se o número de cliques for múltiplo do threshold
       if (count.value % threshold === 0) {
         showNotification(
-          `Você alcançou ${count.value} cliques (XP)! Próxima meta em +${threshold} cliques.`
+          `Você alcançou ${count.value} cliques! Próxima meta em +${threshold} cliques.`
         );
       }
       if (clickTimeout) clearTimeout(clickTimeout);
@@ -71,6 +70,7 @@ export default {
       NotificationVisible,
       NotificationMessage,
       handleClick,
+      savecount,
     };
   },
 };
@@ -91,6 +91,13 @@ p {
   font-size: 1.2em;
   color: #35495e;
   padding: 20px;
+}
+
+a {
+  color: #42b983;
+}
+a:hover {
+  text-decoration: underline;
 }
 
 .btn {
@@ -139,5 +146,27 @@ p {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+.dark .notification {
+  background-color: #181818; /* Dark mode background */
+  color: #0089e4; /* Light text color for dark mode */
+  border-left: #42b983 5px solid; /* Green border */
+}
+
+.dark p {
+  color: #f7fafc; /* Light text color for dark mode */
+}
+
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 2em;
+  }
+  
+  .notification {
+    width: 70%;
+    left: 5%;
+    bottom: 10px;
+  }
 }
 </style>
