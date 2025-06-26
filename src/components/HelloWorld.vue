@@ -34,7 +34,7 @@ export default {
     const NotificationMessage = ref("");
     let clickTimeout = null;
 
-    function savecount () {
+    function savecount() {
       useStorage("clickCount", count.value);
     }
 
@@ -106,6 +106,9 @@ a:hover {
   color: white;
   background-color: #42b983;
   border: none;
+  transition: transform 0.1s ease-in-out,
+    box-shadow 0.1s ease-in-out, background-color 0.1s ease-in-out;
+  transform: scale(1);
   border-radius: 5px;
   cursor: pointer;
 }
@@ -148,6 +151,12 @@ a:hover {
   opacity: 0;
 }
 
+
+.btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
 .dark .notification {
   background-color: #181818; /* Dark mode background */
   color: #0089e4; /* Light text color for dark mode */
@@ -162,7 +171,7 @@ a:hover {
   h1 {
     font-size: 2em;
   }
-  
+
   .notification {
     width: 70%;
     left: 5%;
