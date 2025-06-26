@@ -1,29 +1,61 @@
-# project-vue
+# Clicker Game Vue
 
-This template should help get you started developing with Vue 3 in Vite.
+Um jogo de clicker simples desenvolvido com Vue 3 e Vite.
 
-## Recommended IDE Setup
+![Vue.js](https://img.shields.io/badge/Vue.js-3.5.17-4FC08D?style=flat&logo=vue.js)
+![Vite](https://img.shields.io/badge/Vite-7.0.0-646CFF?style=flat&logo=vite)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## 🎮 Funcionalidades
 
-## Customize configuration
+- **Sistema de Cliques**: Contador de cliques persistente usando `@vueuse/core`
+- **Notificações**: Sistema de notificações dinâmico que aparece em intervalos baseados no progresso
+- **Design Responsivo**: Interface adaptável para diferentes tamanhos de tela
+- **Tema Escuro**: Suporte para modo escuro
+- **Contador Permanente**: Sistema de pontuação que persiste entre sessões
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## 🚀 Tecnologias
 
-## Project Setup
+- Vue 3
+- Vite
+- @vueuse/core
+- lucide-vue-next
 
-```sh
+## ⚙️ Configuração do Projeto
+
+1. Clone o repositório
+
+```bash
+git clone [url-do-seu-repositorio]
+cd project-vue
+```
+
+1. Instale as dependências
+
+```bash
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+1. Inicie o servidor de desenvolvimento
 
-```sh
+```bash
 npm run dev
 ```
 
-### Compile and Minify for Production
+1. Para build de produção
 
-```sh
+```bash
 npm run build
 ```
+
+## 🛠️ Ambiente de Desenvolvimento Recomendado
+
+- [VSCode](https://code.visualstudio.com/)
+- [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (Desative o Vetur se instalado)
+
+## 👤 Autor
+
+Criado por [Rafael](https://github.com/RafaelQuadros1)
+
+## 📝 Licença
+
+Este projeto está sob a licença MIT

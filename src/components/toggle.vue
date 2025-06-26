@@ -1,48 +1,52 @@
 <template>
   <button class="toggle" @click="toggleDarkMode">
-    {{ isDarkMode ? "on" : "of" }}
+    <Sun class="icon" v-if="isDarkMode" />
+    <Moon class="icon-moon" v-else />
   </button>
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { useStorage } from "@vueuse/core";
+import {Sun, Moon} from 'lucide-vue-next'
 
-const isDarkMode = ref(false);
+const isDarkMode = useStorage("theme", false);
+
+// Sempre aplica a classe ao iniciar
+if (isDarkMode.value) {
+  document.documentElement.classList.add("dark");
+} else {
+  document.documentElement.classList.remove("dark");
+}
 
 function toggleDarkMode() {
   isDarkMode.value = !isDarkMode.value;
 
-  if (isDarkMode.value) {
-    document.documentElement.classList.add("dark");
-  } else {
-    document.documentElement.classList.remove("dark");
-  }
+  document.documentElement.classList.toggle("dark", isDarkMode.value);
 }
-
-// Se quiser, pode iniciar baseado no tema do sistema
-onMounted(() => {
-  if (
-    window.matchMedia &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches
-  ) {
-    isDarkMode.value = true;
-    document.documentElement.classList.add("dark");
-  }
-});
 </script>
 
 
 <style scoped>
 .toggle {
-  padding: 0.5rem 1rem;
-  background-color: #42b983;
-  color: white;
+  background-color: transparent;
+  color: #4a5568; /* Cor do ícone no modo claro */
   border: none;
   border-radius: 0.25rem;
   cursor: pointer;
   font-size: 1rem;
 }
-.toggle:hover {
-  background-color: #36a65f;
+
+.icon {
+  width: 24px;
+  height: 24px;
 }
+
+.dark .toggle {
+  color: #fbbf24; /* Cor do ícone no modo escuro */
+}
+
+.icon-moon {
+  color: #4a5568; /* Cor do ícone no modo claro */
+}
+
 </style>
