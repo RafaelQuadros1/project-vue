@@ -6,9 +6,16 @@
   <div v-bind:aria-modal="infoVisible">
     <transition name="fade">
       <div v-if="infoVisible" class="info-modal">
-        <h2>About This App</h2>
-        <p>This is a simple clicker app built with Vue.js.</p>
-        <p>Click the button to increase your score!</p>
+        <h2>About this project</h2>
+        <p>
+          This project was created to demonstrate the use of the Vue framework
+          in a practical way.
+        </p>
+        <p>If you encounter any issues, feel free to contact the developer.</p>
+        <p>
+          by:
+          <a href="https://github.com/RafaelQuadros1">Rafael Quadros</a>
+        </p>
       </div>
     </transition>
   </div>
@@ -37,9 +44,9 @@ export default {
   watch: {
     infoVisible(newValue) {
       if (newValue) {
-        document.body.style.overflow = "hidden"; // Prevent scrolling when modal is open
+        document.body.style.overflow = "hidden";
       } else {
-        document.body.style.overflow = ""; // Restore scrolling when modal is closed
+        document.body.style.overflow = "";
       }
     },
   },
@@ -59,14 +66,15 @@ export default {
 
 .info-modal {
   position: fixed;
-  bottom: 20%;
-  right: 20px;
-  transform: translate(0%, 50%);
+  bottom: 10%;
+  right: 1.5%;
+  /* transform: translate(0%, 50%); */
   background-color: white;
-  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.6);
   border-radius: 5px;
+  border: 1px solid #42b983;
   padding: 20px;
   z-index: 1000;
+  width: 300px;
 }
 
 .icon-info {
@@ -78,6 +86,15 @@ export default {
 .icon-info:hover {
   color: #fbbf24; /* Cor do ícone ao passar o mouse */
   cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .info-modal {
+    width: 80%;
+    right: 5%;
+    bottom: 10%;
+  }
+  
 }
 
 .fade-enter-active,
@@ -108,6 +125,4 @@ export default {
   color: #f7fafc; /* Cor do ícone ao passar o mouse no modo escuro */
   cursor: pointer;
 }
-
-
 </style>
