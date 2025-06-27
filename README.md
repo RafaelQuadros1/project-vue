@@ -50,7 +50,7 @@ npm run build
 ## 🛠️ Ambiente de Desenvolvimento Recomendado
 
 - [VSCode](https://code.visualstudio.com/)
-- [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (Desative o Vetur se instalado)
+- [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (Desative o Vetur se instalado)
 
 ## 👤 Autor
 
