@@ -11,6 +11,7 @@ import {Sun, Moon} from 'lucide-vue-next'
 
 const isDarkMode = useStorage("theme", false);
 
+
 // Sempre aplica a classe ao iniciar
 if (isDarkMode.value) {
   document.documentElement.classList.add("dark");

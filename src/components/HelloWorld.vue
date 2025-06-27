@@ -1,13 +1,14 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <p>created by <a href="https://github.com/RafaelQuadros1">Rafael</a>!!</p>
 
     <button class="btn" @click="handleClick">Click</button>
 
     <transition name="fade">
       <div v-if="NotificationVisible" class="notification">
-        <p>{{ NotificationMessage }}</p>
+        <p>
+          {{ NotificationMessage }}
+        </p>
         <button class="btn-notification" @click="NotificationVisible = false">
           X
         </button>
@@ -34,7 +35,7 @@ export default {
     const NotificationMessage = ref("");
     let clickTimeout = null;
 
-    function savecount () {
+    function savecount() {
       useStorage("clickCount", count.value);
     }
 
@@ -162,7 +163,7 @@ a:hover {
   h1 {
     font-size: 2em;
   }
-  
+
   .notification {
     width: 70%;
     left: 5%;

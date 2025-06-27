@@ -1,20 +1,22 @@
 <script setup>
 import HelloWorld from "./components/HelloWorld.vue";
-import toggle from "./components/toggle.vue";
 import Infobutton from "./components/InfoButton.vue";
-import score from "./components/score.vue";
+import Score from "./components/Score.vue";
+import Shop from "./components/shop.vue";
+import Toggle from "./components/Toggle.vue";
 </script>
 
 <template>
   <div>
     <nav class="navbar">
-      <score />
-      <toggle />
+      <Score />
+      <Toggle />
     </nav>
     <main>
       <HelloWorld :msg="message" />
     </main>
     <footer>
+      <Shop />
       <Infobutton />
     </footer>
   </div>
